@@ -13,7 +13,9 @@ const state = {
   posts: [],
 }
 
-const addPostsToPage = posts =>
+const addPostsToPage = posts => {
+  
+}
 
 const getPosts = () => {
   return fetch(baseUrl)
