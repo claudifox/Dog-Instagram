@@ -1,0 +1,687 @@
+  [1m[35m (1001.5ms)[0m  [1m[35mCREATE DATABASE "Finstagram_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (690.4ms)[0m  [1m[35mCREATE DATABASE "Finstagram_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6808720069222344735)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePosts (20190131152240)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (36.8ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "image" character varying, "title" character varying, "description" character varying, "like_count" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190131152240_create_posts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190131152240"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20190131152319)
+  [1m[35m (25.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (18.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" character varying, "post_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+)[0m
+  ↳ db/migrate/20190131152319_create_comments.rb:3
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  ↳ db/migrate/20190131152319_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190131152319"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (20.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-01-31 15:43:33.502743"], ["updated_at", "2019-01-31 15:43:33.502743"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6808720069222344735)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (14.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (4.3ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjODSYIAahhRwsk_LWwU2xVGUDmt1ciQEIC0a7BE55iTh4LQvH1w"], ["title", "Sunset in UK"], ["description", "Red sky at night, shephards delight!"], ["like_count", 0], ["created_at", "2019-01-31 15:46:19.357366"], ["updated_at", "2019-01-31 15:46:19.357366"]]
+  [1m[35m (33.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (11.2ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "data:image/jpeg;base64,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!"], ["title", "Sunset in UK"], ["description", "Red sky at night, shephards delight!"], ["like_count", 0], ["created_at", "2019-01-31 15:47:22.365272"], ["updated_at", "2019-01-31 15:47:22.365272"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 15:48:36 +0000
+  [1m[35m (25.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/claudiafox/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/Users/claudiafox/Finstagram/app/controllers/posts_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/posts_controller.rb:45: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 15:48:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (8.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (103.28ms)
+Completed 200 OK in 244ms (Views: 151.2ms | ActiveRecord: 83.1ms)
+
+
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (23.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (16.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (1.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (25.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/VFYAAOSwM~tacx5T/$_86.JPG"], ["title", "Weimaraner Puppy!"], ["description", "Look at those blue eyes!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.839323"], ["updated_at", "2019-01-31 16:09:44.839323"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/fc/15/62/fc1562cb8fe3ad64c387c600180f6a87.jpg"], ["title", "Cocker Spaniel Puppies!"], ["description", "Are they not adorable!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.843546"], ["updated_at", "2019-01-31 16:09:44.843546"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://furrybabiesinc.com/wp-content/uploads/2018/03/Cavachon-puppies.jpg"], ["title", "Cavachon Pup!"], ["description", "Look at her climbing that rock..."], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.846499"], ["updated_at", "2019-01-31 16:09:44.846499"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://gfp-2a3tnpzj.stackpathdns.com/wp-content/uploads/2016/07/Chesapeake-Bay-Retriever-Puppies-for-Sale-600x600.jpg"], ["title", "Retriever Chocolate Puppy"], ["description", "He could make your heart melt <3"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.849567"], ["updated_at", "2019-01-31 16:09:44.849567"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Shibu Inu Pup"], ["description", "Look at the curly tail!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.852642"], ["updated_at", "2019-01-31 16:09:44.852642"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Chihiahua Pupster"], ["description", "Keep smiling buddy!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.855831"], ["updated_at", "2019-01-31 16:09:44.855831"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://static.boredpanda.com/blog/wp-content/uploads/2015/04/bulldog-puppy-cute-dog-photography-23__605.jpg"], ["title", "English Bulldog Puppy"], ["description", "He can do the splits!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.859030"], ["updated_at", "2019-01-31 16:09:44.859030"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (27.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/299/card/500000290_medium.jpg"], ["title", "Great Dane Puppy"], ["description", "We'll play catch with you!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.862166"], ["updated_at", "2019-01-31 16:09:44.862166"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/e5/18/88/e51888ef772e7f379fcd1f1d7aae7da1.jpg"], ["title", "Husky Pup"], ["description", "Look at those bright blue eyes!!"], ["like_count", 0], ["created_at", "2019-01-31 16:09:44.892643"], ["updated_at", "2019-01-31 16:09:44.892643"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:09:48 +0000
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 7]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (23.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (99.14ms)
+Completed 200 OK in 150ms (Views: 58.7ms | ActiveRecord: 88.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:10:24 +0000
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/claudiafox/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (11.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (20.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 7]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (107.76ms)
+Completed 200 OK in 188ms (Views: 100.2ms | ActiveRecord: 78.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:24:10 +0000
+  
+LoadError (cannot load such file -- /Users/claudiafox/Finstagram/config/routes.rb):
+  
+bootsnap (1.3.2) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+bootsnap (1.3.2) lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+activesupport (5.2.2) lib/active_support/dependencies.rb:285:in `block in load'
+activesupport (5.2.2) lib/active_support/dependencies.rb:257:in `load_dependency'
+activesupport (5.2.2) lib/active_support/dependencies.rb:285:in `load'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:41:in `block in load_paths'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:41:in `each'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:41:in `load_paths'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:20:in `reload!'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:30:in `block in updater'
+activesupport (5.2.2) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (5.2.2) lib/rails/application/routes_reloader.rb:10:in `execute'
+railties (5.2.2) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.2) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.2) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.2) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.2) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.2) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.2) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.2) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.2) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.2) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.2) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.2) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.2) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.2) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.2) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:24:40 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:25:23 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/claudiafox/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (14.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 7]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (85.54ms)
+Completed 200 OK in 175ms (Views: 101.4ms | ActiveRecord: 63.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2019-01-31 16:25:30 +0000
+Processing by PostsController#index as */*
+  [1m[36mPost Load (28.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (59.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (143.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (32.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 7]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (4.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (27.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (305.23ms)
+Completed 200 OK in 337ms (Views: 38.1ms | ActiveRecord: 298.9ms)
+
+
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE DATABASE "Finstagram_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "Finstagram_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPost Load (14.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (10.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (8.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 7]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 8]]
+  ↳ db/seeds.rb:9
+  [1m[35m (25.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 9]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 10]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 11]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/VFYAAOSwM~tacx5T/$_86.JPG"], ["title", "Weimaraner Puppy!"], ["description", "Look at those blue eyes!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.824444"], ["updated_at", "2019-01-31 17:22:05.824444"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/fc/15/62/fc1562cb8fe3ad64c387c600180f6a87.jpg"], ["title", "Cocker Spaniel Puppies!"], ["description", "Are they not adorable!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.827847"], ["updated_at", "2019-01-31 17:22:05.827847"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (2.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://furrybabiesinc.com/wp-content/uploads/2018/03/Cavachon-puppies.jpg"], ["title", "Cavachon Pup!"], ["description", "Look at her climbing that rock..."], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.830473"], ["updated_at", "2019-01-31 17:22:05.830473"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (28.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://gfp-2a3tnpzj.stackpathdns.com/wp-content/uploads/2016/07/Chesapeake-Bay-Retriever-Puppies-for-Sale-600x600.jpg"], ["title", "Retriever Chocolate Puppy"], ["description", "He could make your heart melt <3"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.865319"], ["updated_at", "2019-01-31 17:22:05.865319"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Shibu Inu Pup"], ["description", "Look at the curly tail!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.872468"], ["updated_at", "2019-01-31 17:22:05.872468"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Chihiahua Pupster"], ["description", "Keep smiling buddy!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.878266"], ["updated_at", "2019-01-31 17:22:05.878266"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://static.boredpanda.com/blog/wp-content/uploads/2015/04/bulldog-puppy-cute-dog-photography-23__605.jpg"], ["title", "English Bulldog Puppy"], ["description", "He can do the splits!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.882090"], ["updated_at", "2019-01-31 17:22:05.882090"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (24.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/299/card/500000290_medium.jpg"], ["title", "Great Dane Puppy"], ["description", "We'll play catch with you!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.910394"], ["updated_at", "2019-01-31 17:22:05.910394"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/e5/18/88/e51888ef772e7f379fcd1f1d7aae7da1.jpg"], ["title", "Husky Pup"], ["description", "Look at those bright blue eyes!!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:05.913833"], ["updated_at", "2019-01-31 17:22:05.913833"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPost Load (22.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (24.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (1.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 12]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 13]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 14]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 15]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 16]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 17]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 18]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 19]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 20]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (25.9ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/VFYAAOSwM~tacx5T/$_86.JPG"], ["title", "Weimaraner Puppy!"], ["description", "Look at those blue eyes!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.234492"], ["updated_at", "2019-01-31 17:22:13.234492"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/fc/15/62/fc1562cb8fe3ad64c387c600180f6a87.jpg"], ["title", "Cocker Spaniel Puppies!"], ["description", "Are they not adorable!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.264921"], ["updated_at", "2019-01-31 17:22:13.264921"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://furrybabiesinc.com/wp-content/uploads/2018/03/Cavachon-puppies.jpg"], ["title", "Cavachon Pup!"], ["description", "Look at her climbing that rock..."], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.268642"], ["updated_at", "2019-01-31 17:22:13.268642"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://gfp-2a3tnpzj.stackpathdns.com/wp-content/uploads/2016/07/Chesapeake-Bay-Retriever-Puppies-for-Sale-600x600.jpg"], ["title", "Retriever Chocolate Puppy"], ["description", "He could make your heart melt <3"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.272244"], ["updated_at", "2019-01-31 17:22:13.272244"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Shibu Inu Pup"], ["description", "Look at the curly tail!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.275448"], ["updated_at", "2019-01-31 17:22:13.275448"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Chihiahua Pupster"], ["description", "Keep smiling buddy!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.278251"], ["updated_at", "2019-01-31 17:22:13.278251"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://static.boredpanda.com/blog/wp-content/uploads/2015/04/bulldog-puppy-cute-dog-photography-23__605.jpg"], ["title", "English Bulldog Puppy"], ["description", "He can do the splits!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.281090"], ["updated_at", "2019-01-31 17:22:13.281090"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/299/card/500000290_medium.jpg"], ["title", "Great Dane Puppy"], ["description", "We'll play catch with you!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.283367"], ["updated_at", "2019-01-31 17:22:13.283367"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (25.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/e5/18/88/e51888ef772e7f379fcd1f1d7aae7da1.jpg"], ["title", "Husky Pup"], ["description", "Look at those bright blue eyes!!"], ["like_count", 0], ["created_at", "2019-01-31 17:22:13.312460"], ["updated_at", "2019-01-31 17:22:13.312460"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6808720069222344735)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (11.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (9.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6808720069222344735)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPost Load (22.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (14.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (44.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 21]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (2.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 23]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 24]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 25]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 26]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 27]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (25.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (2.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 28]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 29]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (1.8ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/VFYAAOSwM~tacx5T/$_86.JPG"], ["title", "Weimaraner Puppy!"], ["description", "Look at those blue eyes!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.002619"], ["updated_at", "2019-01-31 17:40:28.002619"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/fc/15/62/fc1562cb8fe3ad64c387c600180f6a87.jpg"], ["title", "Cocker Spaniel Puppies!"], ["description", "Are they not adorable!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.007872"], ["updated_at", "2019-01-31 17:40:28.007872"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (2.1ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://furrybabiesinc.com/wp-content/uploads/2018/03/Cavachon-puppies.jpg"], ["title", "Cavachon Pup!"], ["description", "Look at her climbing that rock..."], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.011040"], ["updated_at", "2019-01-31 17:40:28.011040"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://gfp-2a3tnpzj.stackpathdns.com/wp-content/uploads/2016/07/Chesapeake-Bay-Retriever-Puppies-for-Sale-600x600.jpg"], ["title", "Retriever Chocolate Puppy"], ["description", "He could make your heart melt <3"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.015811"], ["updated_at", "2019-01-31 17:40:28.015811"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (25.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Shibu Inu Pup"], ["description", "Look at the curly tail!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.044172"], ["updated_at", "2019-01-31 17:40:28.044172"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.ebayimg.com/00/s/NjAwWDYwMA==/z/Jq8AAOSwWMNbszsC/$_20.jpg"], ["title", "Chihiahua Pupster"], ["description", "Keep smiling buddy!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.047205"], ["updated_at", "2019-01-31 17:40:28.047205"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://static.boredpanda.com/blog/wp-content/uploads/2015/04/bulldog-puppy-cute-dog-photography-23__605.jpg"], ["title", "English Bulldog Puppy"], ["description", "He can do the splits!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.050525"], ["updated_at", "2019-01-31 17:40:28.050525"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/299/card/500000290_medium.jpg"], ["title", "Great Dane Puppy"], ["description", "We'll play catch with you!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.056091"], ["updated_at", "2019-01-31 17:40:28.056091"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("image", "title", "description", "like_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image", "https://i.pinimg.com/originals/e5/18/88/e51888ef772e7f379fcd1f1d7aae7da1.jpg"], ["title", "Husky Pup"], ["description", "Look at those bright blue eyes!!"], ["like_count", 0], ["created_at", "2019-01-31 17:40:28.061487"], ["updated_at", "2019-01-31 17:40:28.061487"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
