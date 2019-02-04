@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #245466;
+  margin: 0 auto;
+  height: 125px;
+  text-align: center;
+}
+
+header h2 {
+  padding: 10px;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div.card {
+  background-color: #abd2ea;
+  height: 575px;
+  width: 350px;
+  box-shadow: 10px 10px #245466;
+  padding: 10px;
+  border-radius: 50px;
+  text-align: center;
+  margin: 30px;
+  /* display: flex; */
+
+}
+
+h2 {
+  color: #245466;;
+  font-family: Helvetica;
+}
+
+p {
+  font-size: 1.25em;
+  color: #245466;;
+  font-family: Helvetica;
+}
+
+li {
+  font-size: 1.05em;
+  list-style: none;
+  padding-right: 20px;
+}
+
+.logo {
+  height: 100px;
+  margin-top: 10px;
+}
+
+.post-image {
+  width: 250px;
+  height: 250px;
+  border: solid 5px #245466;
+  border-radius: 50px;
+  /* text-align: center; */
+}
+
+
+.like-button {
+  display: inline-block;
+  border-radius: 45px;
+  /* width: auto; */
+  height: 87px;
+  width: 87px;
+  padding: 2px 16px;
+  background-color: #245466;
+  color: white;
+  text-align: center;
+  font-size: 22px;
+  margin: 5px;
+}
+
+.like-button:hover {
+  background-color: #36839f
+}
+
+.like-button:active {
+  background-color: #36839f;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.like-button-image {
+  width: 40px;
+  height: 40px;
+  /* margin-left: -3px; */
+}
+
+
+.comments-button {
+ display: inline-block;
+ border-radius: 45px;
+ background-color: #245466;
+ border: none;
+ color: white;
+ text-align: center;
+ font-size: 28px;
+ padding: 20px;
+ width: 250px;
+ transition: all 0.5s;
+ cursor: pointer;
+ margin: 5px;
+}
+
+.comments-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.comments-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.comments-button:hover span {
+  padding-right: 25px;
+}
+
+.comments-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

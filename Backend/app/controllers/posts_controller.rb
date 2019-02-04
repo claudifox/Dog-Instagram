@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
    @posts = Post.all
    render json: @posts
@@ -18,6 +19,16 @@ class PostsController < ApplicationController
     render json: @post
   end
 
+  def update
+    find_post
+    @post.update(post_params)
+    if @post.save
+      render json: @post, status: :accepted
+    else
+      render json: { errors: @post.errors.full_messages }, status: :unprocessible_entity
+    end
+  end
+
   def destroy
     find_post
     @post.destroy
@@ -25,7 +36,7 @@ class PostsController < ApplicationController
 
   def increase_likes
    find_post
-   @post.like_count += 1
+   @post.like_count+=1
    @post.save
    render json: @post
   end
